@@ -1,0 +1,125 @@
+fileFormatVersion: 2
+guid: ffee2e352d8a2b14dbcc2a18244bce50
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Base_royal
+    100002: Gun009
+    100004: Gun010
+    100006: Gun011
+    100008: Gun012
+    100010: Gun013
+    100012: Gun014
+    100014: Gun015
+    100016: Gun016
+    100018: Rock_royal
+    100020: Royal
+    100022: Royal_flag
+    100024: //RootNode
+    100026: tower_royal
+    400000: Base_royal
+    400002: Gun009
+    400004: Gun010
+    400006: Gun011
+    400008: Gun012
+    400010: Gun013
+    400012: Gun014
+    400014: Gun015
+    400016: Gun016
+    400018: Rock_royal
+    400020: Royal
+    400022: Royal_flag
+    400024: //RootNode
+    400026: tower_royal
+    2300000: Base_royal
+    2300002: Gun009
+    2300004: Gun010
+    2300006: Gun011
+    2300008: Gun012
+    2300010: Gun013
+    2300012: Gun014
+    2300014: Gun015
+    2300016: Gun016
+    2300018: Rock_royal
+    2300020: Royal_flag
+    2300022: tower_royal
+    3300000: Base_royal
+    3300002: Gun009
+    3300004: Gun010
+    3300006: Gun011
+    3300008: Gun012
+    3300010: Gun013
+    3300012: Gun014
+    3300014: Gun015
+    3300016: Gun016
+    3300018: Rock_royal
+    3300020: Royal_flag
+    3300022: tower_royal
+    4300000: Royal_flag
+    4300002: Gun016
+    4300004: Gun014
+    4300006: Gun013
+    4300008: Gun009
+    4300010: Gun010
+    4300012: Gun015
+    4300014: Rock_royal
+    4300016: Base_royal
+    4300018: Gun011
+    4300020: Gun012
+    4300022: tower_royal
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .0299999993
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 1
+  userData: 

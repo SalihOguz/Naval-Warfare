@@ -1,0 +1,3 @@
+Thanks for purchasing this asset.
+To use the controller make sure that the controller script is on the ship,followship script is on the camera with the ship set as the target.
+That's it!

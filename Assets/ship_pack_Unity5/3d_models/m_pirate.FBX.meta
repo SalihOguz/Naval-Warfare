@@ -1,0 +1,87 @@
+fileFormatVersion: 2
+guid: 653cc36a95139ee45a22e4749e5a3fc3
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Medium_pirate_ship001
+    100004: Medium_piratel_guns
+    100006: Pirate_sail_logo
+    100008: Pirate_sain_no_logo
+    100010: Rope006
+    400000: //RootNode
+    400002: Medium_pirate_ship001
+    400004: Medium_piratel_guns
+    400006: Pirate_sail_logo
+    400008: Pirate_sain_no_logo
+    400010: Rope006
+    2300000: Medium_pirate_ship001
+    2300002: Medium_piratel_guns
+    2300004: Pirate_sail_logo
+    2300006: Pirate_sain_no_logo
+    2300008: Rope006
+    3300000: Medium_pirate_ship001
+    3300002: Medium_piratel_guns
+    3300004: Pirate_sail_logo
+    3300006: Pirate_sain_no_logo
+    3300008: Rope006
+    4300000: Rope006
+    4300002: Pirate_sail_logo
+    4300004: Medium_pirate_ship001
+    4300006: Medium_piratel_guns
+    4300008: Pirate_sain_no_logo
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .200000003
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 1
+  userData: 
