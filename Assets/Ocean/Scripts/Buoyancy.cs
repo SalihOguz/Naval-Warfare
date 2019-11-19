@@ -92,7 +92,7 @@ public class Buoyancy : MonoBehaviour {
 		
 		rrigidbody.centerOfMass = new Vector3 (0.0f, CenterOfMassOffset, 0.0f);
 	
-		Vector3 bounds = GetComponent<BoxCollider> ().size;
+		Vector3 bounds = transform.GetChild(0).GetComponent<MeshCollider> ().bounds.size;
 
 		float length = bounds.z;
 		float width = bounds.x;

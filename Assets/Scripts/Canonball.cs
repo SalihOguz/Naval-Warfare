@@ -23,6 +23,9 @@ public class Canonball : MonoBehaviour
     }
     private bool _canonLaunched;
 
+    [SerializeField]
+    private TrailRenderer _trailRenderer;
+
     void Update()
     {
         if (_canonLaunched)
@@ -45,10 +48,17 @@ public class Canonball : MonoBehaviour
 
     public void FireCannon(float horizontalAngle, float elevationAngle)
     {
+        _trailRenderer.enabled = true;
         _horizontalAngle = horizontalAngle;
         _elevationAngle = elevationAngle;
 
         _velocity = ComputeInitialVelocity();
         _canonLaunched = true;
+    }
+
+    public void ResetCanonball()
+    {
+        _trailRenderer.enabled = false;
+        _canonLaunched = false;
     }
 }

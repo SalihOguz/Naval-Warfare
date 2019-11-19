@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,13 +31,8 @@ public class Canon : MonoBehaviour {
     private void Update() {
         if (ShowTrajectory)
         {
-            //ToggleTrajectory(true);
             DrawTrajectory();
         }
-        // else
-        // {
-        //     ToggleTrajectory(false);
-        // }
     }
 
     public void FireCanon()
@@ -50,6 +46,10 @@ public class Canon : MonoBehaviour {
             ToggleTrajectory(false);
             IsReadyToFire = false;
 
+            if (CanonCount > 0)
+            {
+                StartCoroutine(ResetCanonball());
+            }
         }
     }
 
@@ -61,6 +61,18 @@ public class Canon : MonoBehaviour {
         float cosPhi = Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.x);
         
         return CannonPower * new Vector3(cosPhi * sinTheta, -sinPhi, cosPhi * cosTheta);
+    }
+
+    IEnumerator ResetCanonball()
+    {
+        yield return new WaitForSeconds(CooldownTime);
+
+        Canonball.ResetCanonball();
+        Canonball.transform.SetParent(transform);
+        Canonball.transform.localPosition = Vector3.zero;
+        Canonball.transform.localEulerAngles = Vector3.zero;
+        IsReadyToFire = true;
+
     }
 
     #region Trajectory

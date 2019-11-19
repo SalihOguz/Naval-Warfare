@@ -189,11 +189,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34792e5fdebbdb44a81cc7aa54819130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanonCount: 0
+  CanonCount: 50
   IsReadyToFire: 1
   CooldownTime: 4
   Canonball: {fileID: 5215903989020133399}
   CannonPower: 100
+  _goCanonSmoke: {fileID: 0}
   ShowTrajectory: 1
   NumIterations: 400
   IterationsPerDot: 40
@@ -360,6 +361,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5215903991102595094}
     m_Modifications:
+    - target: {fileID: 3405433937598980733, guid: 102712a5354fae342bef5ba37a4362df,
+        type: 3}
+      propertyPath: m_Name
+      value: Cannonball
+      objectReference: {fileID: 0}
     - target: {fileID: 3405433937598980729, guid: 102712a5354fae342bef5ba37a4362df,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -414,11 +420,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3405433937598980733, guid: 102712a5354fae342bef5ba37a4362df,
-        type: 3}
-      propertyPath: m_Name
-      value: Cannonball
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 102712a5354fae342bef5ba37a4362df, type: 3}

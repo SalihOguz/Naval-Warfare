@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Controller : MonoBehaviour {
 	
-	float maxSpeed=10f;
-	private float speed=7f;//acceleration
+	float maxSpeed=100f;
+	private float speed=70f;//acceleration
 	private float reverse=2f;
 	private float turning= 0f;
 	private float tra=0f;

@@ -8,7 +8,7 @@ public class ShipController : MonoBehaviour
     private float Health;
     public GunController GunController;
     public BoatController BoatController;
-    public Camera Camera;
+    private Camera _camera;
 
     private Vector3 lastMousePos;
 
@@ -23,7 +23,7 @@ public class ShipController : MonoBehaviour
 
     void Start()
     {
-
+        _camera = Camera.main;
     }
 
     void Update()
@@ -99,7 +99,7 @@ public class ShipController : MonoBehaviour
     public float CalculateAngle180()
     {
         Vector3 playerAngle = new Vector3(BoatController.transform.forward.x, 0.0f, BoatController.transform.forward.z);
-        Vector3 cameraAngle = new Vector3(Camera.transform.forward.x, 0.0f, Camera.transform.forward.z);
+        Vector3 cameraAngle = new Vector3(_camera.transform.forward.x, 0.0f, _camera.transform.forward.z);
 
         float angle = Quaternion.FromToRotation(playerAngle, cameraAngle).eulerAngles.y;
         if (angle > 180) { return angle - 360f; }
