@@ -32,6 +32,10 @@ public class ShipController : MonoBehaviour
         {
             foreach (ShipSide side in GetActiveSide())
             {
+                if (!GunController.IsReadyToFire(side))
+                {
+                    continue;
+                }
                 GunController.ToggleTrajectories(side, true);
             }
             lastMousePos = Input.mousePosition;
@@ -42,6 +46,11 @@ public class ShipController : MonoBehaviour
             List<ShipSide> activeSides = GetActiveSide();
             foreach (ShipSide side in (ShipSide[]) Enum.GetValues(typeof(ShipSide)))
             {
+                if (!GunController.IsReadyToFire(side))
+                {
+                    continue;
+                }
+
                 if (activeSides.Contains(side))
                 {
                     if (!GunController.IsSideActive(side))

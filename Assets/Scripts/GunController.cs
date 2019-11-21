@@ -65,6 +65,11 @@ public class GunController : MonoBehaviour {
             canon.transform.eulerAngles = Vector3.Lerp(canon.transform.eulerAngles, new Vector3(angle, vec.y, vec.z), Time.deltaTime * 20f);
         }
     }
+
+    public bool IsReadyToFire(ShipSide side)
+    {
+        return (side == ShipSide.Right) ? RightSide[0].IsReadyToFire : LeftSide[0].IsReadyToFire;
+    }
 }
 
 public enum ShipSide
