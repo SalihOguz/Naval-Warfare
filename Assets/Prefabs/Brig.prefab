@@ -66,7 +66,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 294ede83b1334514295971ae7c59a126, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 0.31643873
+  m_Pitch: 0.3000015
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -240,11 +240,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6006243407682626932}
     m_Modifications:
-    - target: {fileID: -3496634425540065777, guid: 947f589f4233edc4db32cdb69963f93f,
-        type: 3}
-      propertyPath: m_boatAudioSource
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 100022, guid: 947f589f4233edc4db32cdb69963f93f, type: 3}
       propertyPath: m_Name
       value: Brig_pirate
@@ -298,6 +293,11 @@ PrefabInstance:
       propertyPath: BoatController
       value: 
       objectReference: {fileID: 6006243407689420948}
+    - target: {fileID: -3496634425540065777, guid: 947f589f4233edc4db32cdb69963f93f,
+        type: 3}
+      propertyPath: m_boatAudioSource
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 947f589f4233edc4db32cdb69963f93f, type: 3}
 --- !u!4 &1286005809101868694 stripped

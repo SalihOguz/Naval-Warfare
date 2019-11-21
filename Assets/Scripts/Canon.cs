@@ -20,12 +20,14 @@ public class Canon : MonoBehaviour {
     public Transform TrajectoryParent;
     public GameObject TrajectoryPoint;
     private List<GameObject> _trajectoryList = new List<GameObject>();
+    private Transform _cannonballParent;
 
     private void Start()
     {
         InitTrajectory();
         Canonball.GravityEffect = _gravityEffect;
         Canonball.InitialSpeed = CannonPower;
+        _cannonballParent = GameObject.FindGameObjectWithTag("CanonballParent").transform;
     }
 
     private void Update() {
@@ -39,7 +41,7 @@ public class Canon : MonoBehaviour {
     {
         if (IsReadyToFire)
         {
-            Canonball.transform.SetParent(GameObject.FindGameObjectWithTag("CanonballParent").transform);
+            Canonball.transform.parent = _cannonballParent;
             Canonball.FireCannon(Mathf.Deg2Rad * transform.eulerAngles.y, Mathf.Deg2Rad * transform.eulerAngles.x);
             CanonCount --;
             ShowTrajectory = false;
