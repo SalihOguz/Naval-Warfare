@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class ShipController : MonoBehaviour
 {
-    private float Health;
     public GunController GunController;
     public BoatController BoatController;
     private Camera _camera;

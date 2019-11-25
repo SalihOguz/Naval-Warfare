@@ -366,6 +366,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cannonball
       objectReference: {fileID: 0}
+    - target: {fileID: 3405433937598980733, guid: 102712a5354fae342bef5ba37a4362df,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3405433937598980729, guid: 102712a5354fae342bef5ba37a4362df,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -379,7 +384,7 @@ PrefabInstance:
     - target: {fileID: 3405433937598980729, guid: 102712a5354fae342bef5ba37a4362df,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 5.09
       objectReference: {fileID: 0}
     - target: {fileID: 3405433937598980729, guid: 102712a5354fae342bef5ba37a4362df,
         type: 3}

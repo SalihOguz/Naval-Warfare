@@ -42,6 +42,7 @@ public class Canon : MonoBehaviour {
         if (IsReadyToFire)
         {
             Canonball.transform.parent = _cannonballParent;
+            Canonball.gameObject.SetActive(true);
             Canonball.FireCannon(Mathf.Deg2Rad * transform.eulerAngles.y, Mathf.Deg2Rad * transform.eulerAngles.x);
             CanonCount --;
             ShowTrajectory = false;
@@ -71,8 +72,9 @@ public class Canon : MonoBehaviour {
 
         Canonball.ResetCanonball();
         Canonball.transform.SetParent(transform);
-        Canonball.transform.localPosition = Vector3.zero;
+        Canonball.transform.localPosition = new Vector3(0,0,5);
         Canonball.transform.localEulerAngles = Vector3.zero;
+        Canonball.gameObject.SetActive(false);
         IsReadyToFire = true;
 
     }

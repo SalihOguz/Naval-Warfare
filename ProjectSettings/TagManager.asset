@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ocean
   - CanonballParent
+  - Canonball
   layers:
   - Default
   - TransparentFX
