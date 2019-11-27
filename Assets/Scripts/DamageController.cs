@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DamageController : MonoBehaviour
 {
+    public bool IsPlayer = false;
     public float Health = 150f;
     public float CanonDamage = 10f;
 
@@ -43,5 +44,14 @@ public class DamageController : MonoBehaviour
 
         _shipRigidBody.mass = 100f;
         // TODO particle effect
+
+        if (!IsPlayer)
+        {
+            EnemyController.Instance.EnemyShipDead();
+        }   
+        else
+        {
+            EnemyController.Instance.PlayerDead();
+        }
     }
 }
