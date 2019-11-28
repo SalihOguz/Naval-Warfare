@@ -41,6 +41,7 @@ public class DamageController : MonoBehaviour
         _hullMeshFilter.mesh = _damagedHull;
         _damagedObjects.SetActive(true);
         _nonDamagedObjects.SetActive(false);
+        GetComponent<MeshCollider>().enabled = false;
 
         _shipRigidBody.mass = 100f;
         // TODO particle effect

@@ -14774,7 +14774,6 @@ GameObject:
   m_Component:
   - component: {fileID: 400022}
   - component: {fileID: 5400000}
-  - component: {fileID: 11400000}
   - component: {fileID: 5841676177136932643}
   - component: {fileID: 3387390525705284950}
   - component: {fileID: 1895942857758554506}
@@ -14825,21 +14824,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100022}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ba2f84c54fdd3243841a4460255248d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firedelay: 100
-  numberCannons: 6
-  is_big: 0
 --- !u!82 &5841676177136932643
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20030,6 +20014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20f30bf11b213944e969b23e8f7a28dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsPlayer: 0
   Health: 150
   CanonDamage: 10
   _nonDamagedObjects: {fileID: 100048}

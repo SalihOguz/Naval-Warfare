@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
@@ -30,6 +31,8 @@ public class UIController : MonoBehaviour
 
         StartCoroutine(Refresh());
         EnemyController.Instance.EnemyShipSinked += RefreshKillCount;
+
+        Time.timeScale = 0;
     } 
 
     private void OnDisable() {
@@ -44,10 +47,26 @@ public class UIController : MonoBehaviour
         
         _txtLeftCanonCount.text = _gunController.IsReadyToFire(ShipSide.Left) ? "6" : "0";
         _txtRightCanonCount.text = _gunController.IsReadyToFire(ShipSide.Right) ? "6" : "0";
+        StartCoroutine(Refresh());
     }
 
     private void RefreshKillCount()
     {
         _txtKillCount.text = "Kills: " + EnemyController.Instance.SinkedCount;
+    }
+
+    public void Replay()
+    {
+        SceneManager.LoadScene("Game");
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
+    public void StartGame()
+    {
+        Time.timeScale = 1;
     }
 }

@@ -15,8 +15,8 @@ public class EnemyController : MonoBehaviour
 
     public void EnemyShipDead()
     {
-        EnemyShipSinked?.Invoke();
         SinkedCount ++;
+        EnemyShipSinked?.Invoke();
     }
 
     public void PlayerDead()
