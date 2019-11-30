@@ -390,6 +390,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198004072633724148, guid: e654196eade2ee04493d15d57c6f0dc2,
+        type: 3}
+      propertyPath: stopAction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19853172, guid: e654196eade2ee04493d15d57c6f0dc2, type: 3}
       propertyPath: InitialModule.startSizeY.minMaxState
       value: 3

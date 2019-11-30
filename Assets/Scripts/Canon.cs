@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Canon : MonoBehaviour {
-    public int CanonCount = 0;
+    //public int CanonCount = 0;
     public bool IsReadyToFire = true;
     public float CooldownTime = 4f;
     public Canonball Canonball;
     public float CannonPower = 100f;
     private Vector3 _gravityEffect = new Vector3(0,-9.81f,0);
 
-    [SerializeField]
-    private GameObject _goCanonSmoke;
 
     [Header ("Trajectory")]
     public bool ShowTrajectory = false;
@@ -31,8 +29,12 @@ public class Canon : MonoBehaviour {
     [SerializeField]
     private GameObject _particleEffect;
 
+    public ShipController ShipController;
+    private bool _isPlayer;
+
     private void Start()
     {
+        _isPlayer = ShipController.IsPlayer;
         InitTrajectory();
         Canonball.GravityEffect = _gravityEffect;
         Canonball.InitialSpeed = CannonPower;
@@ -53,7 +55,7 @@ public class Canon : MonoBehaviour {
             Canonball.transform.parent = _cannonballParent;
             Canonball.gameObject.SetActive(true);
             Canonball.FireCannon(Mathf.Deg2Rad * transform.eulerAngles.y, Mathf.Deg2Rad * transform.eulerAngles.x);
-            CanonCount --;
+            //CanonCount --;
             ShowTrajectory = false;
             ToggleTrajectory(false);
             IsReadyToFire = false;
@@ -63,10 +65,10 @@ public class Canon : MonoBehaviour {
 
             _particleEffect.SetActive(true);
 
-            if (CanonCount > 0)
-            {
-                StartCoroutine(ResetCanonball());
-            }
+            // if (CanonCount > 0)
+            // {
+            StartCoroutine(ResetCanonball());
+            // }
         }
     }
 
@@ -93,6 +95,11 @@ public class Canon : MonoBehaviour {
 
         _particleEffect.SetActive(false);
 
+        if (!_isPlayer)
+        {
+            ToggleTrajectory(true);
+            ShowTrajectory = true;
+        }
     }
 
     #region Trajectory
@@ -127,12 +134,29 @@ public class Canon : MonoBehaviour {
             GameObject trajectoryObject = Instantiate(TrajectoryPoint, transform.position, Quaternion.identity, TrajectoryParent);
             trajectoryObject.SetActive(false);
             _trajectoryList.Add(trajectoryObject);
+
+            if (!_isPlayer)
+            {
+                trajectoryObject.GetComponent<CurvedLinePoint>().FireOrderEvent += FireCanon;
+            }
+            else
+            {
+                trajectoryObject.GetComponent<BoxCollider>().enabled = false;
+            }
         }
     }
 
     public void ToggleTrajectory(bool isVisible)
     {
-        TrajectoryParent.GetComponent<LineRenderer>().enabled = isVisible;
+        if (_isPlayer)
+        {
+            TrajectoryParent.GetComponent<LineRenderer>().enabled = isVisible;
+        }
+        else
+        {
+            TrajectoryParent.GetComponent<LineRenderer>().enabled = false;
+        }
+
         foreach (GameObject item in _trajectoryList)
         {
             item.SetActive(isVisible);

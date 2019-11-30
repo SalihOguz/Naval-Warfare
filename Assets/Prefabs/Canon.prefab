@@ -191,12 +191,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34792e5fdebbdb44a81cc7aa54819130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanonCount: 50
   IsReadyToFire: 1
   CooldownTime: 5
   Canonball: {fileID: 5215903989020133399}
-  CannonPower: 150
-  _goCanonSmoke: {fileID: 0}
+  CannonPower: 125
   ShowTrajectory: 1
   NumIterations: 400
   IterationsPerDot: 40
@@ -206,6 +204,7 @@ MonoBehaviour:
   _audioSource: {fileID: 6276704933698047203}
   _soundController: {fileID: 7380999230198735704}
   _particleEffect: {fileID: 6443949002858953682}
+  ShipController: {fileID: 0}
 --- !u!82 &6276704933698047203
 AudioSource:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class DamageController : MonoBehaviour
 {
     public ShipController ShipController;
     public float Health = 150f;
+    private float _maxHealth;
     public float CanonDamage = 10f;
 
     [SerializeField]
@@ -23,6 +24,18 @@ public class DamageController : MonoBehaviour
 
     [SerializeField]
     private Rigidbody _shipRigidBody;
+
+    private void Start() {
+        _maxHealth = Health;
+    }
+
+    private void Update()
+    {
+        if (ShipController.IsPlayer)
+        {
+            Health = Mathf.Clamp(Health + Time.deltaTime, 0, _maxHealth);
+        }
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -56,6 +69,7 @@ public class DamageController : MonoBehaviour
 
         if (!ShipController.IsPlayer)
         {
+            ShipController.GunController.ToggleAllTrajectories(false);
             EnemyController.Instance.EnemyShipDead();
         }   
         else

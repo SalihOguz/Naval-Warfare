@@ -6,7 +6,9 @@ using UnityEngine.Events;
 public class EnemyController : MonoBehaviour
 {
     public static EnemyController Instance;
-    public UnityAction EnemyShipSinked;
+    public UnityAction EnemyShipSinkedEvent;
+
+    public UnityAction PlayerDeadEvent;
     public int SinkedCount;
 
     private void Awake() {
@@ -16,12 +18,12 @@ public class EnemyController : MonoBehaviour
     public void EnemyShipDead()
     {
         SinkedCount ++;
-        EnemyShipSinked?.Invoke();
+        EnemyShipSinkedEvent?.Invoke();
     }
 
     public void PlayerDead()
     {
-        // TODO show a UI and restart button
+        PlayerDeadEvent?.Invoke();
     }
 
 }

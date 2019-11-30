@@ -143,6 +143,10 @@ public class Buoyancy : MonoBehaviour {
 	int lastFrame=-15;
 
 	void update() {
+		if (Time.timeScale == 0)
+		{
+			return;
+		}
 
 		if (ocean != null) {
 

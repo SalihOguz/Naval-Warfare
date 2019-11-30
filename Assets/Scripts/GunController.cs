@@ -20,7 +20,7 @@ public class GunController : MonoBehaviour {
     [SerializeField]
     private SoundController _soundController;
 
-    void Start()
+    void Awake()
     {
         RightSide = _goRightSide.GetComponentsInChildren<Canon>();
         LeftSide = _goLeftSide.GetComponentsInChildren<Canon>();
@@ -31,6 +31,10 @@ public class GunController : MonoBehaviour {
 
     public void FireCanons(ShipSide side, bool isPlayer)
     {
+        if (!IsSideCanonActive(side))
+        {
+            return;
+        }
         _audioSource.clip = _soundController.GetRandomSound();
         _audioSource.Play();
 
@@ -75,9 +79,14 @@ public class GunController : MonoBehaviour {
         }
     }
 
-    public bool IsSideActive(ShipSide side)
+    public bool IsSideTrajectoryActive(ShipSide side)
     {
         return (side == ShipSide.Right) ? RightSide[0].IsTrajectoryActive() : LeftSide[0].IsTrajectoryActive();
+    }
+
+    public bool IsSideCanonActive(ShipSide side)
+    {
+        return (side == ShipSide.Right) ? RightSide[0].IsReadyToFire : LeftSide[0].IsReadyToFire;
     }
 
     public float GetCanonAngle()

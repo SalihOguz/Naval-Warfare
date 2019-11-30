@@ -12,18 +12,17 @@ public class ShipController : MonoBehaviour
     private Vector3 lastMousePos;
     public bool IsPlayer = false;
 
-
-
-    // [Header("Sails")]
-    // [SerializeField]
-    // private GameObject _sailsPrefab;
-    // [SerializeField]
-    // private GameObject _normalPrefab;
-    // public bool AreSailsOn;
+    // Bot
+    private bool _increaseAngle = true;
 
     void Start()
     {
         _camera = Camera.main;
+
+        if (!IsPlayer)
+        {
+            GunController.ToggleAllTrajectories(true);
+        }
     }
 
     void Update()
@@ -33,6 +32,18 @@ public class ShipController : MonoBehaviour
             return;
         }
         
+        if (IsPlayer)
+        {
+            PlayerUpdate();
+        }
+        else
+        {
+            BotUpdate();
+        }
+    }
+    
+    private void PlayerUpdate()
+    {
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             foreach (ShipSide side in GetActiveSide())
@@ -58,14 +69,14 @@ public class ShipController : MonoBehaviour
 
                 if (activeSides.Contains(side))
                 {
-                    if (!GunController.IsSideActive(side))
+                    if (!GunController.IsSideTrajectoryActive(side))
                     {
                         GunController.ToggleTrajectories(side, true);
                     }
                 }
                 else
                 {
-                    if (GunController.IsSideActive(side))
+                    if (GunController.IsSideTrajectoryActive(side))
                     {
                         GunController.ToggleTrajectories(side, false);
                     }
@@ -90,7 +101,28 @@ public class ShipController : MonoBehaviour
                 GunController.ToggleAllTrajectories(false);
             }
         }
+    }
 
+    private void BotUpdate()
+    {
+        float currentAngle = GunController.GetCanonAngle();
+        if (currentAngle >= 359f)
+        {
+            _increaseAngle = false;
+        }
+        else if (currentAngle <= (359f - GunController.MaxCanonAngle))
+        {
+            _increaseAngle = true;
+        }
+
+        if (_increaseAngle)
+        {
+            GunController.SetCanonAngle(-100f);
+        }
+        else
+        {
+            GunController.SetCanonAngle(100f);
+        }
     }
 
     private List<ShipSide> GetActiveSide()

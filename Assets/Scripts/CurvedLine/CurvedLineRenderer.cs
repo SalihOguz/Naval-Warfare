@@ -70,25 +70,4 @@ public class CurvedLineRenderer : MonoBehaviour
 			line.SetWidth( lineWidth, lineWidth );
 		}
 	}
-
-	void OnDrawGizmosSelected()
-	{
-		Update();
-	}
-
-	void OnDrawGizmos()
-	{
-		if( linePoints.Length == 0 )
-		{
-			GetPoints();
-		}
-
-		//settings for gizmos
-		foreach( CurvedLinePoint linePoint in linePoints )
-		{
-			linePoint.showGizmo = showGizmos;
-			linePoint.gizmoSize = gizmoSize;
-			linePoint.gizmoColor = gizmoColor;
-		}
-	}
 }

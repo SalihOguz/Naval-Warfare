@@ -24,15 +24,28 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private Text _txtKillCount;
 
+    [SerializeField]
+    private Text _txtVictoryTimer;
+
+    [SerializeField]
+    private GameObject _winPopup;
+
+    [SerializeField]
+    private GameObject _losePopup;
+
     private float fullHealth;
+    
+    public int TotalTime = 600;
 
     private void Start() {
         fullHealth = _damageController.Health;
 
         StartCoroutine(Refresh());
-        EnemyController.Instance.EnemyShipSinked += RefreshKillCount;
+        EnemyController.Instance.EnemyShipSinkedEvent += RefreshKillCount;
+        EnemyController.Instance.PlayerDeadEvent += Lose;
 
         StartCoroutine(StartDelay());
+        StartCoroutine(RefreshTimer());
     } 
 
     IEnumerator StartDelay()
@@ -42,7 +55,22 @@ public class UIController : MonoBehaviour
     }
 
     private void OnDisable() {
-        EnemyController.Instance.EnemyShipSinked -= RefreshKillCount;
+        EnemyController.Instance.EnemyShipSinkedEvent -= RefreshKillCount;
+    }
+
+    private IEnumerator RefreshTimer()
+    {
+        _txtVictoryTimer.text = "Time Left: " + TotalTime/60 + ":" + TotalTime%60;
+        TotalTime -= 1;
+        if (TotalTime <= 0)
+        {
+            Lose();
+        }
+        else
+        {
+            yield return new WaitForSeconds(1f);
+            StartCoroutine(RefreshTimer());
+        }
     }
 
     private IEnumerator Refresh()
@@ -58,7 +86,17 @@ public class UIController : MonoBehaviour
 
     private void RefreshKillCount()
     {
-        _txtKillCount.text = "Kills: " + EnemyController.Instance.SinkedCount;
+        _txtKillCount.text = "Kills: " + EnemyController.Instance.SinkedCount + "/8";
+
+        if (EnemyController.Instance.SinkedCount == 8)
+        {
+            _winPopup.SetActive(true);
+        }
+    }
+
+    private void Lose()
+    {
+        _losePopup.SetActive(true);
     }
 
     public void Replay()
