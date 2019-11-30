@@ -27,6 +27,11 @@ public class ShipController : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
+        
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             foreach (ShipSide side in GetActiveSide())

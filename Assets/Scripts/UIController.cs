@@ -32,8 +32,14 @@ public class UIController : MonoBehaviour
         StartCoroutine(Refresh());
         EnemyController.Instance.EnemyShipSinked += RefreshKillCount;
 
-        Time.timeScale = 0;
+        StartCoroutine(StartDelay());
     } 
+
+    IEnumerator StartDelay()
+    {
+        yield return new WaitForEndOfFrame();
+        Time.timeScale = 0;
+    }
 
     private void OnDisable() {
         EnemyController.Instance.EnemyShipSinked -= RefreshKillCount;
@@ -68,5 +74,10 @@ public class UIController : MonoBehaviour
     public void StartGame()
     {
         Time.timeScale = 1;
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0;
     }
 }
