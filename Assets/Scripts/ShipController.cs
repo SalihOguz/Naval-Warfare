@@ -10,6 +10,7 @@ public class ShipController : MonoBehaviour
     private Camera _camera;
 
     private Vector3 lastMousePos;
+    public bool IsPlayer = false;
 
 
 
@@ -85,7 +86,7 @@ public class ShipController : MonoBehaviour
         {
             foreach (ShipSide side in GetActiveSide())
             {
-                GunController.FireCanons(side);
+                GunController.FireCanons(side, IsPlayer);
                 GunController.ToggleAllTrajectories(false);
             }
         }

@@ -233,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GunController: {fileID: 3751836077696150042}
   BoatController: {fileID: 6006243407689420948}
+  IsPlayer: 0
 --- !u!1001 &1286005809102001152
 PrefabInstance:
   m_ObjectHideFlags: 0

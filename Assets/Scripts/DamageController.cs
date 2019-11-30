@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using MirzaBeig.ParticleSystems.Demos;
 using UnityEngine;
 
 public class DamageController : MonoBehaviour
 {
-    public bool IsPlayer = false;
+    public ShipController ShipController;
     public float Health = 150f;
     public float CanonDamage = 10f;
 
@@ -29,6 +30,13 @@ public class DamageController : MonoBehaviour
         {
             Health -= CanonDamage;
 
+            if (ShipController.IsPlayer)
+            {
+                CameraShake cameraShake = FindObjectOfType<CameraShake>();
+                cameraShake.Add(1f, 2.0f, 0.2f, CameraShakeTarget.Position, CameraShakeAmplitudeCurve.FadeInOut25);
+                cameraShake.Add(6.0f, 2.0f, 0.3f, CameraShakeTarget.Rotation, CameraShakeAmplitudeCurve.FadeInOut25);  
+            }
+
             if (Health <= 0)
             {
                 Die();
@@ -46,7 +54,7 @@ public class DamageController : MonoBehaviour
         _shipRigidBody.mass = 100f;
         // TODO particle effect
 
-        if (!IsPlayer)
+        if (!ShipController.IsPlayer)
         {
             EnemyController.Instance.EnemyShipDead();
         }   

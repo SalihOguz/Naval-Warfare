@@ -22,6 +22,15 @@ public class Canon : MonoBehaviour {
     private List<GameObject> _trajectoryList = new List<GameObject>();
     private Transform _cannonballParent;
 
+    [SerializeField]
+    private AudioSource _audioSource;
+
+    [SerializeField]
+    private SoundController _soundController;
+
+    [SerializeField]
+    private GameObject _particleEffect;
+
     private void Start()
     {
         InitTrajectory();
@@ -48,6 +57,11 @@ public class Canon : MonoBehaviour {
             ShowTrajectory = false;
             ToggleTrajectory(false);
             IsReadyToFire = false;
+
+            _audioSource.clip = _soundController.GetRandomSound();
+            _audioSource.Play();
+
+            _particleEffect.SetActive(true);
 
             if (CanonCount > 0)
             {
@@ -76,6 +90,8 @@ public class Canon : MonoBehaviour {
         Canonball.transform.localEulerAngles = Vector3.zero;
         Canonball.gameObject.SetActive(false);
         IsReadyToFire = true;
+
+        _particleEffect.SetActive(false);
 
     }
 

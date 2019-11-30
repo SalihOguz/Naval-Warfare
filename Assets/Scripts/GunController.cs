@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using MirzaBeig.ParticleSystems.Demos;
 using UnityEngine;
 
 public class GunController : MonoBehaviour {
@@ -12,6 +14,12 @@ public class GunController : MonoBehaviour {
     public float CanonAngleChangeSpeed = 0.01f;
     public int MaxCanonAngle = 10;
 
+    [SerializeField]
+    private AudioSource _audioSource;
+
+    [SerializeField]
+    private SoundController _soundController;
+
     void Start()
     {
         RightSide = _goRightSide.GetComponentsInChildren<Canon>();
@@ -21,13 +29,34 @@ public class GunController : MonoBehaviour {
         LeftSide.CopyTo(AllCanons, RightSide.Length);
     }
 
-    public void FireCanons(ShipSide side)
+    public void FireCanons(ShipSide side, bool isPlayer)
     {
-        // TODO pool the canons wşth reload time and touching somewhere
+        _audioSource.clip = _soundController.GetRandomSound();
+        _audioSource.Play();
+
+        StartCoroutine(StartFire(side, isPlayer));
+    }
+
+    private IEnumerator StartFire(ShipSide side, bool isPlayer)
+    {
+        yield return new WaitForSeconds(0.3f);
+        int count = 0;
         foreach (Canon canon in (side == ShipSide.Right) ? RightSide : LeftSide)
         {
-            canon.FireCanon();
+            StartCoroutine(FireDelay(canon, count / 5f));
+            count++;
         }
+    }
+
+    private IEnumerator FireDelay(Canon canon, float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        canon.FireCanon();
+
+        //screen shake
+        CameraShake cameraShake = FindObjectOfType<CameraShake>();
+        cameraShake.Add(0.2f, 5.0f, 0.2f, CameraShakeTarget.Position, CameraShakeAmplitudeCurve.FadeInOut25);
+        cameraShake.Add(4.0f, 5.0f, 0.5f, CameraShakeTarget.Rotation, CameraShakeAmplitudeCurve.FadeInOut25);      
     }
 
     public void ToggleTrajectories(ShipSide side, bool isActive)
@@ -53,7 +82,7 @@ public class GunController : MonoBehaviour {
 
     public float GetCanonAngle()
     {
-        return RightSide[0].transform.eulerAngles.x;
+        return RightSide[0].transform.localEulerAngles.x;
     }
 
     public void SetCanonAngle(float diff)
@@ -61,8 +90,8 @@ public class GunController : MonoBehaviour {
         float angle  = Mathf.Clamp(GetCanonAngle() - (diff * CanonAngleChangeSpeed), 359f - MaxCanonAngle, 359f);
         foreach (Canon canon in AllCanons)
         {
-            Vector3 vec = canon.transform.eulerAngles;
-            canon.transform.eulerAngles = Vector3.Lerp(canon.transform.eulerAngles, new Vector3(angle, vec.y, vec.z), Time.deltaTime * 20f);
+            Vector3 vec = canon.transform.localEulerAngles;
+            canon.transform.localEulerAngles = Vector3.Lerp(canon.transform.localEulerAngles, new Vector3(angle, vec.y, vec.z), Time.deltaTime * 20f);
         }
     }
 

@@ -25,14 +25,26 @@ public class Canonball : MonoBehaviour
 
     [SerializeField]
     private TrailRenderer _trailRenderer;
+    
+    [SerializeField]
+    private AudioSource _audioSource;
+
+    [SerializeField]
+    private SoundController _soundController;
+
+    [SerializeField]
+    private MeshRenderer _meshRenderer;
+
+    [SerializeField]
+    private GameObject _particleEffect;
 
     void Update()
     {
         if (_canonLaunched)
         {
             float dt = Time.deltaTime;
-            _velocity += _gravityEffect * dt;
-            transform.position += _velocity * dt;
+            _velocity += _gravityEffect * dt * 3f;
+            transform.position += _velocity * dt * 3f;
         }
     }
 
@@ -60,5 +72,23 @@ public class Canonball : MonoBehaviour
     {
         _trailRenderer.enabled = false;
         _canonLaunched = false;
+        _meshRenderer.enabled = true;
+        _particleEffect.SetActive(false);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Ship")
+        {
+            _audioSource.clip = _soundController.GetRandomSound();
+            _audioSource.Play();
+
+            _particleEffect.SetActive(true);
+
+            _canonLaunched = false;
+            _velocity = Vector3.zero;
+            _meshRenderer.enabled = false;
+        }
+
     }
 }
